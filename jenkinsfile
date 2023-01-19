@@ -7,9 +7,6 @@ pipeline {
                 script{
                     try{
                         echo 'scriptint is running'
-                        python3 -m pip install --user virtualenv
-                        python3 -m virtualenv nims_all_numbers
-                        source nims_all_numbers/bin/activate
                         which python
                         pwd
                         python --version
@@ -19,9 +16,7 @@ pipeline {
                         python3 app.py	
                         echo 'script no error'
                         python3 --version
-                        which python 
-                        deactivate 
-                        rm -rf nims_all_numbers				
+                        which python 			
                         echo 'script running done'
                     }
                     catch (err){
