@@ -19,11 +19,11 @@ pipeline {
                         sh 'which python' 			
                         echo 'script running done'
                     }
-                    catch (err){
+                    catch (ERROR){
                         echo 'Error catched'
                         currentBuild.result = 'FAILURE'
                         echo 'Error catched'
-                        throw err
+                        throw ERROR
                     }
                 }
             }
