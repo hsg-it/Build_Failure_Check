@@ -7,18 +7,18 @@ pipeline {
                 script{
                     try{
                         echo 'scriptint is running'
-                        python3.9 -m pip install --user virtualenv
-                        python3.9 -m virtualenv nims_all_numbers
+                        python3 -m pip install --user virtualenv
+                        python3 -m virtualenv nims_all_numbers
                         source nims_all_numbers/bin/activate
                         which python
                         pwd
                         python --version
-                        python3.9 --version
+                        python3 --version
                         which python
                         echo 'script about to run!!!!'
                         python3 app.py	
                         echo 'script no error'
-                        python3.9 --version
+                        python3 --version
                         which python 
                         deactivate 
                         rm -rf nims_all_numbers				
