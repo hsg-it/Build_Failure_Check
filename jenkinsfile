@@ -7,16 +7,16 @@ pipeline {
                 script{
                     try{
                         echo 'scriptint is running'
-                        which python
-                        pwd
-                        python --version
-                        python3 --version
-                        which python
+                        sh 'which python'
+                        sh 'pwd'
+                        sh 'python --version'
+                        sh 'python3 --version'
+                        sh 'which python'
                         echo 'script about to run!!!!'
-                        python3 app.py	
+                        sh 'python3 app.py'	
                         echo 'script no error'
-                        python3 --version
-                        which python 			
+                        sh 'python3 --version'
+                        sh 'which python' 			
                         echo 'script running done'
                     }
                     catch (err){
