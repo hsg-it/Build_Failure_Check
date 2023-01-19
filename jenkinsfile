@@ -23,8 +23,6 @@ pipeline {
                         echo 'Error catched'
                         currentBuild.result = 'FAILURE'
                         echo 'Error catched'
-                        deactivate 
-                        rm -rf nims_all_numbers
                         throw err
                     }
                 }
