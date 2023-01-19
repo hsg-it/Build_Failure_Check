@@ -6,13 +6,14 @@ pipeline {
                 echo 'Starting Build'
                 script{
                     try{
-                        
+                        echo 'scriptint is running'
                         python3 app.py	
-                    
+                        echo 'script running done'
                     }
                     catch (err){
                         echo 'Error catched'
                         currentBuild.result = 'FAILURE'
+                        echo 'Error catched'
                         throw err
                     }
                 }
@@ -21,7 +22,7 @@ pipeline {
     }
     post{
         failure {
-            echo 'Build failed'
+            echo 'Build failed!!!!'
         }
     }
 }
