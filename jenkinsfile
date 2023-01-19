@@ -1,0 +1,28 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Starting Build'
+                script{
+                    try{
+                        
+                        python3 app.py	
+                    
+                    }
+                    catch (err){
+                        echo 'Error catched'
+                        currentBuild.result = 'FAILURE'
+                        throw err
+                    }
+                }
+            }
+        }
+    }
+    post{
+        failure {
+            echo 'Build failed'
+        }
+    }
+}
+
