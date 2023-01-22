@@ -1,0 +1,38 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Starting Build'
+                script{
+                    try{
+                        echo 'scriptint is running'
+                        sh 'which python'
+                        sh 'pwd'
+                        sh 'python --version'
+                        sh 'python3 --version'
+                        sh 'which python'
+                        echo 'script about to run!!!!'
+                        sh 'python3 app.py'	
+                        echo 'script no error'
+                        sh 'python3 --version'
+                        sh 'which python' 			
+                        echo 'script running done'
+                    }
+                    catch (ERROR){
+                        echo 'Error catched'
+                        currentBuild.result = 'FAILURE'
+                        echo 'Error catched'
+                        throw ERROR
+                    }
+                }
+            }
+        }
+    }
+    post{
+        failure {
+            echo 'Build failed!!!!'
+        }
+    }
+}
+

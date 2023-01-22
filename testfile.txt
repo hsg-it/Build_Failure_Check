@@ -1,0 +1,42 @@
+pipeline {
+    agent any
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Starting Build'
+                script{
+                    try{
+                        sh '''#!/bin/bash
+                            pwd
+                            python3.9 -m pip install --user virtualenv
+                            python3.9 -m virtualenv nims_all_numbers
+                            source nims_all_numbers/bin/activate
+                            which python
+                            pwd
+                            python --version
+                            python3.9 --version
+                            which python
+                            python -m pip install -r requirements.txt
+                            python3.9 --version
+                            which python
+                            python nims_all_numbers_bulk.py		
+                            deactivate 
+                            rm -rf nims_all_numbers				
+                            '''
+                    }
+                    catch (err){
+                        echo 'Error catched'
+                        currentBuild.result = 'FAILURE'
+                        throw err
+                    }
+                }
+            }
+        }
+    }
+    post{
+        failure {
+            echo 'Build failed'
+        }
+    }
+}
+
