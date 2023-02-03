@@ -1,5 +1,6 @@
 import requests
 import logging
+import sys
 
 if __name__ == "__main__":
     print("inside main")
@@ -11,5 +12,6 @@ if __name__ == "__main__":
         logging.info(f"Sign in to NIMS successful")
     
     except Exception as e:
-        # print("Error :",e)
+        print("Error :",e)
         logging.error(f"Error during NIMS sign in: {e}")
+        sys.exit(-1)
